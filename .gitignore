@@ -1,0 +1,30 @@
+# Node
+build
+node_modules
+
+# IDE
+.idea
+*.iml
+.vscode
+
+# server
+/logs/*
+.env
+/knexfile.ts
+
+# Tests
+*.db
+coverage
+
+# docker compose data
+/docker/*data/*
+/docker-compose/*data/*
+
+# db logs
+/database/logs/*
+
+# VS code extention for rest queries
+*.http
+
+#Mac hidden files
+.DS_store
