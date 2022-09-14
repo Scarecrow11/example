@@ -1,7 +1,6 @@
 import { DBModule } from './app/db/DBModule'
 import { logger } from './app/logger/LoggerFactory'
 import { LoggerModule } from './app/logger/LoggerModule'
-import { MailerModule } from './app/mailer/MailerModule'
 import { ImageModule } from './app/media/image/ImageModule'
 import { ProfileModule } from './app/profiles/ProfileModule'
 import { RouterModule } from './app/routes/RouterModule'
@@ -13,7 +12,6 @@ export class AppContext {
   static async initialize(): Promise<void> {
     await LoggerModule.initialize()
     await DBModule.initialize()
-    await MailerModule.initialize()
     await AuthModule.initialize()
     await UserModule.initialize()
     await ImageModule.initialize()

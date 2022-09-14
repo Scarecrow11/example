@@ -7,19 +7,11 @@ export interface ProfileDTO {
   readonly firstName: string
   readonly middleName: string
   readonly lastName: string
-  readonly jobTitle: string
-  readonly legalName: string
-  readonly shortName: string
   readonly email: string
-  readonly phone: string
   readonly birthdayAt: Date
-  readonly gender: string
-  readonly bio: string
   readonly username: string
   readonly role: UserRole
   readonly systemStatus: UserSystemStatus
-  readonly emailConfirmed: boolean
-  readonly phoneConfirmed: boolean
   readonly avatar: string
   readonly language?: Language
 }

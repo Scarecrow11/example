@@ -101,7 +101,6 @@
     "winston-daily-rotate-file": "4.2.1"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   }
 }

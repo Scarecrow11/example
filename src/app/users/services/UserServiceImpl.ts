@@ -22,23 +22,6 @@ export class UserServiceImpl extends GenericServiceImpl<User, UserDAO> implement
     })
   }
 
-  public async findByGoogleId(googleId: string): Promise<User | undefined> {
-    logger.debug('user.service.find-by-googleId.start')
-    return TrxUtility.transactional<User | undefined>(this.db, async trxProvider => {
-      const user = await this.dao.findUserByGoogleId(trxProvider, googleId)
-      logger.debug('user.service.find-by-googleId.done')
-      return user
-    })
-  }
-
-  public async findByFacebookId(facebookId: string): Promise<User | undefined> {
-    logger.debug('user.service.find-by-facebookId.start')
-    return TrxUtility.transactional<User | undefined>(this.db, async trxProvider => {
-      const user = await this.dao.findUserByFacebookId(trxProvider, facebookId)
-      logger.debug('user.service.find-by-facebookId.done')
-      return user
-    })
-  }
 
   public async findByEmail(email: string): Promise<User | undefined> {
     logger.debug('user.service.find-by-email.start')

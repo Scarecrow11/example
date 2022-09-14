@@ -13,10 +13,7 @@ export interface PersonDAO extends GenericDAO<Person> {
 
   updateEmail(trxProvider: TrxProvider, email: string, acs: ACS): Promise<void>
 
-  updatePhone(trxProvider: TrxProvider, phone: string, acs: ACS): Promise<void>
-
   getByUserUID(trxProvider: TrxProvider, userUID: string): Promise<Person>
-
 
   getByEmail(trxProvider: TrxProvider, email: string): Promise<Person | undefined>
 }

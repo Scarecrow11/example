@@ -35,15 +35,6 @@ export class PersonDAOImpl implements PersonDAO {
       firstName: person.firstName,
       middleName: person.middleName,
       lastName: person.lastName,
-      jobTitle: person.jobTitle,
-      legalName: person.legalName,
-      shortName: person.shortName,
-      tagline: person.tagline,
-      email: person.email,
-      phone: person.phone,
-      birthdayAt: person.birthdayAt,
-      gender: person.gender,
-      bio: person.bio,
       avatar: person.avatar,
       createdAt: DateUtility.now(),
     })
@@ -60,15 +51,6 @@ export class PersonDAOImpl implements PersonDAO {
         firstName: person.firstName,
         middleName: person.middleName,
         lastName: person.lastName,
-        jobTitle: person.jobTitle,
-        legalName: person.legalName,
-        shortName: person.shortName,
-        tagline: person.tagline,
-        email: person.email,
-        phone: person.phone,
-        birthdayAt: person.birthdayAt,
-        gender: person.gender,
-        bio: person.bio,
       })
     if (!acs.fullAccess) {
       queryBuilder.whereIn('uid', function() {
@@ -113,21 +95,9 @@ export class PersonDAOImpl implements PersonDAO {
       .where({ uid: uid })
       .update({
         avatar: null,
-        isLegalPerson: false,
-        isPublicPerson: false,
         firstName: '',
         middleName: '',
         lastName: '',
-        jobTitle: '',
-        legalName: '',
-        shortName: '',
-        tagline: '',
-        phone: '',
-        birthdayAt: null,
-        gender: Gender.UNSET,
-        bio: '',
-        addressDistrict: '',
-        addressTown: '',
         deletedAt: DateUtility.now(),
       })
 
@@ -183,13 +153,6 @@ export class PersonDAOImpl implements PersonDAO {
         firstName: person.firstName,
         middleName: person.middleName,
         lastName: person.lastName,
-        jobTitle: person.jobTitle,
-        legalName: person.legalName,
-        shortName: person.shortName,
-        tagline: person.tagline,
-        birthdayAt: person.birthdayAt,
-        gender: person.gender,
-        bio: person.bio,
       })
     if (!acs.fullAccess) {
       queryBuilder.whereIn('uid', function() {
@@ -217,21 +180,6 @@ export class PersonDAOImpl implements PersonDAO {
 
     checkDAOResult(result, 'person', 'update-email')
     logger.debug('person.dao.update-email.done')
-  }
-
-  public async updatePhone(trxProvider: TrxProvider, phone: string, acs: ACS): Promise<void> {
-    logger.debug('person.dao.update-phone.start')
-    const trx = await trxProvider()
-    const result = await trx('person')
-      .whereIn('uid', function() {
-        return this.from('users')
-          .select('personUID')
-          .where(acs.toSQL('uid'))
-      })
-      .update({ phone })
-
-    checkDAOResult(result, 'person', 'update-phone')
-    logger.debug('person.dao.update-phone.done')
   }
 
   public async getByUserUID(trxProvider: TrxProvider, userUID: string): Promise<Person> {
